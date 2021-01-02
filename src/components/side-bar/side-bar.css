@@ -1,0 +1,29 @@
+.side-bar {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    max-width: 12vw;
+    min-height: 100vh;
+    
+    background-image: linear-gradient(white, rgba(128, 128, 128, 0.383));
+    border-radius: 1vmax;
+    border: 3px solid black;
+    left: 0%;
+}
+
+.get-form-button {
+    padding: 1em;
+    font-size: 1em;
+    min-width: 15vw;
+    min-height: 5vh;
+    background-color: rgba(173, 216, 230, 0.514);
+    border-radius: 0.5em;
+}
+
+.main-menu {
+    position: absolute;
+    right: 0%;
+    top: 0%;
+}
+

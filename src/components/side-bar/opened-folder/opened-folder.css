@@ -1,0 +1,24 @@
+.opened-folder {
+    font-size: 1.4rem;
+    font-family: 'Times New Roman', Times, serif;
+    padding: 3vmax;
+    top: 20%;
+    left: 30%;
+    position: absolute;
+    width: 25vw;
+    min-height: 20vh;
+    border: 1px solid black;
+    border-radius: 1em;
+}
+
+.top-form {
+    display: flex;
+}
+
+.close-button {
+    position: relative;
+    margin-left: 3vw;
+    margin-top: 4vh;
+    min-width: 4vw;
+    max-height: 3.5vh;
+}

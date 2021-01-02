@@ -1,0 +1,26 @@
+.form {
+    padding: 2vmax;
+    border: 3px solid lightblue;
+    background-image: linear-gradient(white, rgba(40, 153, 218, 0.157));
+    min-width: 40vw;
+    position: relative;
+    left:-25%;
+    min-height: 50vh;
+    margin-top: 3vh;
+    box-sizing: border-box;
+}
+
+textarea {
+    margin: 1vw;
+    font-size: 1.7rem;
+    font-family: 'Times New Roman', Times, serif;
+    min-height: 5vh;
+    max-width: 34vw;
+}
+
+.submit-button {
+    float: right;
+    margin-top: -1vh;
+    min-height: 5vh;
+    min-width: 5vw;
+}
