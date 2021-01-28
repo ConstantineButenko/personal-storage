@@ -3,7 +3,7 @@ import './folder.css'
 
 export default class Folder extends Component {
 
-    
+  
 
     state = {
         id: this.props.id,
@@ -16,7 +16,7 @@ export default class Folder extends Component {
         const {onShowFolder, onRemoveButton} = this.props;
         return (
             <div
-            onClick = {() => onShowFolder(header, text)}
+            onClick = {() => onShowFolder(header, text, id)}
             className = 'folder'>
                 <button
                 onClick = {(e) => onRemoveButton(id, e)}

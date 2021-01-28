@@ -22,19 +22,11 @@ export default class SideBar extends Component {
         })
    }
 
-   onChangeContent = (oldHeader, header, text) => {
-            console.log(header);
-            const idx = this.state.folders.findIndex(item => item.header === oldHeader);  // Переписать
-            const newFolders = this.state.folders;
-            newFolders[idx].header = header;
-            newFolders[idx].text = text;
-            this.setState({folders: newFolders});
-   }
-
-   showFolder = (header, text) => {
+   showFolder = (header, text, id) => {
      const shownFolder = this.state.displayForm ? <OpenedFolder
                          onChangeContent = {this.onChangeContent}
                          onClose = {this.onClose}
+                         id = {id}
                          header = {header}
                          text = {text} ></OpenedFolder> : null
     this.setState(({openedFolder}) => {
@@ -53,8 +45,13 @@ export default class SideBar extends Component {
     })
 }  
 
-    onClose = () => {
-        this.setState({openedFolder: null})
+    onClose = (id, header, text) => {
+        const newFolders = this.state.folders;
+        const idx = newFolders.findIndex(item => item.id === id);
+        newFolders[idx].header = header;
+        newFolders[idx].text = text;
+        this.setState({openedFolder: null,
+                        folders: newFolders}, )
     }
 
     onRemove = (id, e) => {
@@ -70,7 +67,7 @@ export default class SideBar extends Component {
         openedFolder: null,
         displayForm: true,
         folders: [
-            this.addFolder('Цель номер один', `Доделать логику сайта фронтенда - добавить возможность редактировать содержимое папок,
+            this.addFolder('Цель номер один', `Доделать логику фронтенда - добавить возможность редактировать содержимое папок,
                                                 удалять папки, настроить отображение даты `),
             this.addFolder('Цель номер два', `Сделать нормальный дизайн, расположение, фоны, границы, иконки`),
             this.addFolder('Цель номер три', `Прикрутить бэкенд - настроить работу с сервером, базу данных, GET, POST-реквесты
@@ -78,7 +75,7 @@ export default class SideBar extends Component {
         ]
     }
 
-    render () {
+     render () {
         const {folders, displayForm, openedFolder} = this.state;
         const buttonLabel = displayForm ? 'Нажмите, чтобы добавить папку' : 'Нажмите, чтобы закрыть окно'
         const foldersContent = folders.map(folder => <Folder
@@ -108,5 +105,4 @@ export default class SideBar extends Component {
             </div>
             
         )
-    }
-}
+        }}

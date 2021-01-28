@@ -4,8 +4,9 @@ import React, {Component} from 'react';
 export default class OpenedFolder extends Component {
 
     state = {
-        ownHeader: null,
-        ownText: null,
+        id: this.props.id,
+        ownHeader: this.props.header,
+        ownText: this.props.text,
         DIV: false,
         H1: false
     }
@@ -19,30 +20,30 @@ export default class OpenedFolder extends Component {
 
     onBlur = (e) => {
         e.preventDefault()
-        const text = e.target.typeofchange === 'ownText' ? e.target.value : this.state.text;
-        const header = e.target.typeofchange === 'ownHeader' ? e.target.value : this.state.header;
-        const oldHeader = this.state.ownHeader;
-         this.setState({[e.target.name] : false,
-                        ownHeader: header,
-                         ownText: text})
-        this.props.onChangeContent(oldHeader, header, text)
-    
+        if (e.target.name === 'H1') {
+            const header = e.target.value;
+            this.setState({H1 : false,
+                        ownHeader: header})
+        }
+        else  {
+            const text = e.target.value;
+            this.setState({DIV : false,
+                        ownText: text})
+        }
     }
 
     render() {
     const {onClose, header, text} = this.props;
-    const {ownHeader, ownText, DIV, H1} = this.state;
+    const {ownHeader, ownText, DIV, H1, id} = this.state;
     const textValue = ownText ? ownText : text;
     const headerValue = ownHeader ? ownHeader : header;
     const domHeader = H1 ? <textarea
-                             typeofchange = 'ownHeader'
                              name = 'H1'
                              onBlur = {(e) => this.onBlur(e)}
                              defaultValue = {headerValue}></textarea> : <h1
     onClick = {(e) => this.onEdit(e)}>{headerValue}</h1>
     const domText = DIV ? <textarea
     onBlur = {(e) => this.onBlur(e)}
-    typeofchange = 'ownText'
     name = 'DIV'
     onSubmit = {(e) => this.onSubmit(e)}
     defaultValue = {textValue}></textarea>  : <div
@@ -54,7 +55,7 @@ export default class OpenedFolder extends Component {
             {domHeader}
             <button
             className = 'close-button'
-            onClick = {() => onClose()}></button></div>
+            onClick = {() => onClose(id, ownHeader, ownText)}></button></div>
             {domText}
         </div>
     )

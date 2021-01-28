@@ -28,13 +28,15 @@ export default class Form extends Component {
             hidden = {this.props.selfHidden}
             className = 'form'>
                 <input
+                maxLength = "15"
                 onChange = {this.onChange}
+                placeholder = 'Введите заголовок'
                 type = 'text'
                 name = 'headerValue' />
                <textarea
                name = 'formValue'
                onChange = {this.onChange}
-               placeholder = 'Введите что-нибудь'
+               placeholder = 'Введите основной текст'
                value = {formValue} ></textarea>
                <button
                className = 'submit-button'
